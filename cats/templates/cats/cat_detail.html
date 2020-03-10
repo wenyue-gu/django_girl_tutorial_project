@@ -10,12 +10,12 @@
             <h1><a href="/cats/">Cats</a></h1>
         </div>
         <div class="content container">
-
-            <p>
-                Hello! Welcome to my random site for text_based cat game! Click <a href="/cats/list/">here</a> for a list of cats
-            </p>
-            
-
+            <h2><a href="{% url 'cat_detail' pk=cat.pk %}">Cat Name: {{ cat.name }}</a></h2>
+            <p>Owner name: {{ cat.owner }}</p>
+            <p>Description: {{ cat.description }}</p>
+            <p>Status: This cat is {{ cat.hunger_status }} ({{ cat.hunger }}) and {{ cat.happiness_status }} ({{ cat.happiness }})</p>
+            <p>Actions:</p>
+            <p><a href="{% url 'cat_interact' pk=cat.pk action=1%}">Play</a> or <a href="{% url 'cat_interact' pk=cat.pk action=2%}">Pet</a> or <a href="{% url 'cat_interact' pk=cat.pk action=3%}">Feed</a></p>
         </div>
     </body>
 </html>

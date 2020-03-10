@@ -11,11 +11,9 @@
         </div>
         <div class="content container">
 
-            <p>
-                Hello! Welcome to my random site for text_based cat game! Click <a href="/cats/list/">here</a> for a list of cats
-            </p>
-            
-
+            {%for cat in cats%}
+                <h2><a href="{% url 'cat_detail' pk=cat.pk %}">{{ cat.name }}</a></h2>
+            {%endfor%}
         </div>
     </body>
 </html>

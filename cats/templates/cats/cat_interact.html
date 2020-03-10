@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Lucy's CatSite</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <div class="page-header">
+            <h1><a href="/cats/">Cats</a></h1>
+        </div>
+        <div class="content container">
+            <h2><a href="{% url 'cat_detail' pk=cat.pk %}">Cat Name: {{ cat.name }}</a></h2>    
+            {% if play %}
+                <p>You played with the cat!</p>
+            {% endif %}
+            {% if pet %}
+                <p>You petted the cat!</p>
+            {% endif %}
+            {% if feed %}
+                <p>You fed the cat!</p>
+            {% endif %}
+            <p>Current status: {{cat.name}} is {{cat.hunger_status}} ({{cat.hunger}}) and {{cat.happiness_status}} ({{cat.happiness}})</p>
+            <p><a href="{% url 'cat_detail' pk=cat.pk %}"></a>Click to go back to cat</a></p>
+        </div>
+    </body>
+</html>

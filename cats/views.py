@@ -8,10 +8,26 @@ def cat_home(request):
 
 def cat_list(request):
     #posts -> queryset
-    posts = Cats.objects.all()
+    cats = Cats.objects.all()
     return render(request, 'cats/cat_list.html', {'cats':cats})
 
 
 def cat_detail(request, pk):
     cat = get_object_or_404(Cats, pk=pk)
-    return render(request, 'cats/post_detail.html', {'cat': cat})
+    return render(request, 'cats/cat_detail.html', {'cat': cat})
+
+def cat_interact(request, pk, action):
+    cat = get_object_or_404(Cats, pk=pk)
+    play = False
+    pet = False
+    feed = False
+    if(action == 1):
+        cat.play()
+        play = True
+    elif(action ==2):
+        cat.pet()
+        pet = True
+    elif(action==3):
+        cat.feed()
+        feed = True
+    return render(request, 'cats/cat_interact.html', {'cat': cat, 'play': play, 'feed':feed, 'pet':pet})

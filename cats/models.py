@@ -7,24 +7,40 @@ class Cats(models.Model):
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE)
     name = models.CharField(max_length = 200)
     description = models.TextField()
-    happiness = 6
-    hunger = 0
+    happiness = models.DecimalField(default =6, max_digits=2, decimal_places=0)
+    hunger = models.DecimalField(default =3, max_digits=2, decimal_places=0)
+    count = models.DecimalField(default =0, max_digits=2, decimal_places=0)
     hunger_status = "full"
     happiness_status = "calm"
 
     def pet(self):
         self.happiness = self.happiness+1
+        self.hunger = self.hunger+1
+        self.checkstatus()
         self.save()
     
     def feed(self):
         self.hunger = self.hunger-1
         if(self.hunger<0):
             self.hunger = 0
+        self.checkstatus()
         self.save()
 
     def play(self):
-        self.hunger = self.hunger+1
-        self.happiness = self.happiness+1
+        self.hunger = self.hunger+2
+        self.happiness = self.happiness+2
+        self.checkstatus()
+        self.save()
+
+    def time(self):
+        self.count = self.count+1
+        if(self.count>5):
+            self.hunger = self.hunger+1
+            self.happiness = self.happiness-1
+            if(self.happiness<0):
+                self.happiness = 0
+            self.count = 0
+        self.checkstatus()
         self.save()
 
     def checkstatus(self):
@@ -38,7 +54,7 @@ class Cats(models.Model):
 
         if(self.happiness<3):
             self.happiness_status = "depressed"
-        elif (self.happiniess<7):
+        elif (self.happiness<7):
             self.happiness_status = "calm"
         else:
             self.happiness_status = "estatic"
@@ -47,6 +63,3 @@ class Cats(models.Model):
         return self.name
 
 
-
-    def save(self, *args, **kwargs):
-        super(Cats, self).save(*args, **kwargs) # Call the "real" save() method.

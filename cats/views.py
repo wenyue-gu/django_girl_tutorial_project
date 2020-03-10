@@ -7,13 +7,14 @@ def cat_home(request):
     return render(request, 'cats/cat_home.html', {})
 
 def cat_list(request):
-    #posts -> queryset
+    #cats -> queryset
     cats = Cats.objects.all()
     return render(request, 'cats/cat_list.html', {'cats':cats})
 
 
 def cat_detail(request, pk):
     cat = get_object_or_404(Cats, pk=pk)
+    cat.time()
     return render(request, 'cats/cat_detail.html', {'cat': cat})
 
 def cat_interact(request, pk, action):

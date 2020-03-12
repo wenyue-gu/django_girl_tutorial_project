@@ -21,7 +21,7 @@
                 <p>You fed the cat!</p>
             {% endif %}
             <p>Current status: {{cat.name}} is {{cat.hunger_status}} ({{cat.hunger}}) and {{cat.happiness_status}} ({{cat.happiness}})</p>
-            <p><a href="{% url 'cat_detail' pk=cat.pk %}"></a>Click to go back to cat</a></p>
+            <p><a href="{% url 'cat_detail' pk=cat.pk %}">Click to go back to cat</a></p>
         </div>
     </body>
 </html>

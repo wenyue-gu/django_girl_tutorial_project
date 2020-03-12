@@ -1,7 +1,7 @@
 {% load static %}
 <html>
     <head>
-        <title>Blog</title>
+        <title>Lucy's Site</title>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
@@ -9,13 +9,13 @@
     </head>
     <body>
         <div class="page-header">
-            <h1><a href="/blog/">Django Girls Blog</a></h1>
+            <h1><a href="/blog/">Lucy's Site</a></h1>
         </div>
         <div class="content container">
             <div class="row">
                 <div class="col-md-8">
-                {% block content %}
-                {% endblock %}
+                <p><a href="{% url 'post_list' %}">Click here for DjangoGirl Blog</a></p>
+                <p><a href="{% url 'cat_home' %}">Click here for Cats</a></p>
                 </div>
             </div>
         </div>

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'blog.apps.BlogConfig',
     'cats.apps.CatsConfig',
+    'misc.apps.MiscConfig',
 ]
 
 MIDDLEWARE = [
